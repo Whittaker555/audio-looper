@@ -5,9 +5,6 @@ import { Audio } from 'expo-av';
 import AudioComponent from './AudioComponent'
 
 
-const dimensions = Dimensions.get('window');
-const imageHeight = Math.round(dimensions.width * 9 / 16);
-const imageWidth = dimensions.width;
 class App extends Component{
   state = {
     hasGrantedMicPermission: false,
@@ -40,16 +37,15 @@ class App extends Component{
         </View>
       )
     } else {
-     
       return (
-        <View style={{
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'center',
-        }}>        
-          <AudioComponent title={'drums'} file={require('./assets/sounds/whoosh.wav') }/>
-          <AudioComponent title={'kalimba'} file={require('./assets/sounds/kal.wav') }/>
-          <AudioComponent title={'moog'} file={require('./assets/sounds/moog.wav') }/>
+        <View style={styles.container}>        
+          <Image source={require('./assets/cassette.png')} style={styles.image} />
+          <AudioComponent title={'1'} file={require('./assets/sounds/1.wav') }/>
+          <AudioComponent title={'2'} file={require('./assets/sounds/2.wav') }/>
+          <AudioComponent title={'3'} file={require('./assets/sounds/3.wav') }/>
+          <AudioComponent title={'4'} file={require('./assets/sounds/4.wav') }/>
+          <AudioComponent title={'5'} file={require('./assets/sounds/kal.wav') }/>
+          <AudioComponent title={'6'} file={require('./assets/sounds/moog.wav') }/>
         </View>
 
       )
@@ -60,11 +56,17 @@ export default App
 
 const styles = StyleSheet.create({
   container: {
+    padding: 10,
     flex: 1,
-    backgroundColor: "#fff"
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
+
+
   image: {
+    resizeMode: "stretch",
     width: '100%',
-    height: '10%'
-  }
+    height: 200,
+  },
 })
